@@ -42,6 +42,25 @@ Future<List<PostModel>> getPostApi() async {
       ),
       body: Column(
         children: [
+          Expanded(
+            child: FutureBuilder(
+              future: getPostApi(),
+              builder: (context, snapshot){
+                if (!snapshot.hasData){
+                  return Text('Loading');
+                }
+                else{
+                  return ListView.builder(
+                    itemCount: postList.length,
+                    itemBuilder: (context, index){
+                    return Text(index.toString());
+                  });
+                }
+            
+            
+              },
+            ),
+          )
           
         ],
       ),
