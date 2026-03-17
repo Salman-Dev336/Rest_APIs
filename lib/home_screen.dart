@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, depend_on_referenced_packages
+// ignore_for_file: prefer_interpolation_to_compose_strings, unused_import, depend_on_referenced_packages
 
 import 'dart:convert';
 
@@ -25,6 +25,7 @@ Future<List<PostModel>> getPostApi() async {
   var data = jsonDecode(response.body.toString());
 
   if (response.statusCode == 200) {
+    postList.clear();
     for (Map<String, dynamic> i in data) {
       postList.add(PostModel.fromJson(i));
     }
@@ -60,8 +61,8 @@ Future<List<PostModel>> getPostApi() async {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(postList[index].title.toString()),
-                            Text(postList[index].body.toString())
+                            Text('Title\n'+postList[index].title.toString()),
+                            Text('Body\n'+postList[index].body.toString())
                         
                           ],
                         ),
