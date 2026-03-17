@@ -54,14 +54,17 @@ Future<List<PostModel>> getPostApi() async {
                     itemCount: postList.length,
                     itemBuilder: (context, index){
                     return Card(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(postList[index].title.toString()),
-                          Text(postList[index].body.toString())
-
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(postList[index].title.toString()),
+                            Text(postList[index].body.toString())
+                        
+                          ],
+                        ),
                       ),
                     );
                   });
