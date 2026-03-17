@@ -23,4 +23,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Photos{
+  late String title, url;
+
+  Photos({required this.title, required this.url});
+}
+
   
