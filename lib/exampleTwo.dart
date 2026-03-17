@@ -12,6 +12,21 @@ class Exampletwo extends StatefulWidget {
 
 class _ExampletwoState extends State<Exampletwo> {
   List<Photos> photosList = [];
+  Future<List<Photos>> getPhotosApi() async{
+    final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
+
+    var data = JsonDecode(response.body.toString());
+    if( response.statusCode == 200){
+      for(Map<String, dynamic> i in data){
+        Photos photos = Photos(title: i['title'], url: i['url']);
+        photosList.add(photos);
+      }
+
+
+    }
+
+  
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
