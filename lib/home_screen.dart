@@ -55,6 +55,8 @@ Future<List<PostModel>> getPostApi() async {
                     itemBuilder: (context, index){
                     return Card(
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(postList[index].title.toString()),
                           Text(postList[index].body.toString())
