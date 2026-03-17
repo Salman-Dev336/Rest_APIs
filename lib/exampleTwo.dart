@@ -11,6 +11,7 @@ class Exampletwo extends StatefulWidget {
 }
 
 class _ExampletwoState extends State<Exampletwo> {
+  List<Photos> photosList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,4 +26,9 @@ class _ExampletwoState extends State<Exampletwo> {
       ),
     );
   }
+}
+class Photos{
+  late String title, url;
+
+  Photos({required this.title, required this.url});
 }
