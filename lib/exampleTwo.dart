@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,14 +17,18 @@ class _ExampletwoState extends State<Exampletwo> {
   Future<List<Photos>> getPhotosApi() async{
     final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
 
-    var data = JsonDecode(response.body.toString());
+    var data = jsonDecode(response.body.toString());
     if( response.statusCode == 200){
       for(Map<String, dynamic> i in data){
         Photos photos = Photos(title: i['title'], url: i['url']);
         photosList.add(photos);
       }
 
+      return photosList;
 
+    }
+    else{
+      return photosList;
     }
 
   
