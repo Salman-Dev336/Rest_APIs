@@ -53,7 +53,15 @@ Future<List<PostModel>> getPostApi() async {
                   return ListView.builder(
                     itemCount: postList.length,
                     itemBuilder: (context, index){
-                    return Text(postList[index].title.toString());
+                    return Card(
+                      child: Column(
+                        children: [
+                          Text(postList[index].title.toString()),
+                          Text(postList[index].body.toString())
+
+                        ],
+                      ),
+                    );
                   });
                 }
             
