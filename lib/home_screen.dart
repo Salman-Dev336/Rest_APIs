@@ -61,8 +61,18 @@ Future<List<PostModel>> getPostApi() async {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Title\n'+postList[index].title.toString()),
-                            Text('Body\n'+postList[index].body.toString())
+                            Text('Title',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold
+                            ),),
+                            Text(postList[index].title.toString()),
+                            Text('Description',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold
+                            ),),
+                            Text(postList[index].body.toString())
                         
                           ],
                         ),
