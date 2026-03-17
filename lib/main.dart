@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rest_api/exampleTwo.dart';
-import 'package:rest_api/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,10 +22,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Photos{
-  late String title, url;
 
-  Photos({required this.title, required this.url});
-}
 
   

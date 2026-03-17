@@ -1,7 +1,6 @@
 // ignore_for_file: file_names
 
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,47 +8,85 @@ class Exampletwo extends StatefulWidget {
   const Exampletwo({super.key});
 
   @override
-  State<Exampletwo> createState() => _ExampletwoState();
+ State<Exampletwo> createState() => _ExampletwoState();
 }
 
 class _ExampletwoState extends State<Exampletwo> {
-  List<Photos> photosList = [];
-  Future<List<Photos>> getPhotosApi() async{
-    final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
 
-    var data = jsonDecode(response.body.toString());
-    if( response.statusCode == 200){
-      for(Map<String, dynamic> i in data){
-        Photos photos = Photos(title: i['title'], url: i['url']);
-        photosList.add(photos);
-      }
+  // API Function
+  Future<List<Photos>> getPhotosApi() async {
+    final response = await http.get(
+      Uri.parse('https://jsonplaceholder.typicode.com/photos'),
+    );
 
-      return photosList;
+    if (response.statusCode == 200) {
+      List data = jsonDecode(response.body);
 
+      return data.map<Photos>((json) {
+        return Photos(
+          title: json['title'] ?? '',
+          url: json['url'] ?? '',
+        );
+      }).toList();
+    } else {
+      return [];
     }
-    else{
-      return photosList;
-    }
-
-  
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('API Integration'),
+        title: const Text('API Integration'),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
+      body: FutureBuilder<List<Photos>>(
+        future: getPhotosApi(),
+        builder: (context, snapshot) {
 
-        ],
+          // Loading
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          // Error
+          if (snapshot.hasError) {
+            return const Center(child: Text('Something went wrong'));
+          }
+
+          // No Data
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text('No Data Found'));
+          }
+
+          // Data Available
+          final photosList = snapshot.data!;
+
+          return ListView.builder(
+            itemCount: photosList.length,
+            itemBuilder: (context, index) {
+
+              return ListTile(
+               leading: CircleAvatar(
+                backgroundImage: NetworkImage(snapshot.data![index].url.toString()),
+               ),
+               title: Text(snapshot.data![index].title.toString()),
+              );
+            },
+          );
+        },
       ),
     );
   }
 }
-class Photos{
-  late String title, url;
 
-  Photos({required this.title, required this.url});
+// Model Class
+class Photos {
+  String title;
+  String url;
+
+  Photos({
+    required this.title,
+    required this.url,
+  });
 }
