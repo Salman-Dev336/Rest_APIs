@@ -67,6 +67,7 @@ Future<List<PostModel>> getPostApi() async {
                               fontWeight: FontWeight.bold
                             ),),
                             Text(postList[index].title.toString()),
+                            SizedBox(height: 10,),
                             Text('Description',
                             style: TextStyle(
                               fontSize: 16,
