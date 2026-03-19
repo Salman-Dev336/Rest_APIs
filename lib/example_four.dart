@@ -15,20 +15,19 @@ class ExampleFour extends StatefulWidget {
 }
 
 class _ExampleFourState extends State<ExampleFour> {
-    var data;
+  var data;
 
-  Future<void>  getUserApi() async{
-  
-    final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
+  Future<void> getUserApi() async {
+    final response = await http.get(
+      Uri.parse('https://jsonplaceholder.typicode.com/users'),
+    );
 
-   
-    if (response.statusCode == 200){
-       data = jsonDecode(response.body.toString());
+    if (response.statusCode == 200) {
+      data = jsonDecode(response.body.toString());
       // for(Map<String, dynamic> i in data){
-      //   userList.add (UserModel.fromJson( i));  
+      //   userList.add (UserModel.fromJson( i));
       // }
-    }
-    else{}
+    } else {}
   }
 
   @override
@@ -36,54 +35,68 @@ class _ExampleFourState extends State<ExampleFour> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text('API Integration',
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 20, 
+        title: Text(
+          'API Integration',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
           ),
-         
-
         ),
-         centerTitle: true,
+        centerTitle: true,
       ),
       body: Column(
         children: [
           Expanded(
-            child:FutureBuilder(
-              future: getUserApi(), 
-              builder: (context,  snapshot){
-               if (snapshot.connectionState == ConnectionState.waiting){
-                return Center(child: CircularProgressIndicator(),
-                );
-               }
-
-               else{
-                return ListView.builder(
-                  itemBuilder: (context, index){
-                    return Card(
-                      child: Column(
-                        children: [
-
-                        ],
-                      ),
-
-                    );
-
-                  }
+            child: FutureBuilder(
+              future: getUserApi(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else {
+                  return ListView.builder(
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return Expanded(
+                        child: Card(
+                          child: Column(
+                            children: [
+                              ReusableRow(
+                                title: 'name',
+                                value: data[index]['name'].toString(),
+                              ),
+                               ReusableRow(
+                                title: 'username',
+                                value: data[index]['username'],
+                              ),
+                                ReusableRow(
+                                title: 'adress',
+                                value: data[index]['address']['street'].toString(),
+                              ),
+                                ReusableRow(
+                                title: 'Geo',
+                                value: data[index]['address']['geo'].toString(),
+                              ),
+                                  
+                                                  
+                              // ReusableRow(title: 'name', value: data[index]['name']),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   );
-                
-               }
-              
+                }
               },
-              ),
             ),
+          ),
         ],
       ),
     );
   }
 }
-class ReusableRow  extends StatelessWidget{
+
+class ReusableRow extends StatelessWidget {
   String title, value;
   ReusableRow({super.key, required this.title, required this.value});
 
@@ -93,10 +106,7 @@ class ReusableRow  extends StatelessWidget{
       padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(title),
-          Text(value),
-        ],
+        children: [Text(title), Text(value)],
       ),
     );
   }
