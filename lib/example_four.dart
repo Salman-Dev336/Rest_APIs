@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, unused_local_variable
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -15,32 +17,51 @@ class ExampleFour extends StatefulWidget {
 class _ExampleFourState extends State<ExampleFour> {
 
   Future<void>  getUserApi() async{
+    var data;
     final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
 
-    var data = jsonDecode(response.body.toString());
+   
     if (response.statusCode == 200){
-      for(Map<String, dynamic> i in data){
-        userList.add (UserModel.fromJson( i));  
-      }
+       data = jsonDecode(response.body.toString());
+      // for(Map<String, dynamic> i in data){
+      //   userList.add (UserModel.fromJson( i));  
+      // }
     }
+    else{}
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('API Integration'),
-        centerTitle: true,
+        backgroundColor: Colors.deepPurple,
+        title: Text('API Integration',
+        style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 20, 
+          ),
+         
 
+        ),
+         centerTitle: true,
       ),
       body: Column(
         children: [
           Expanded(
             child:FutureBuilder(
-              future: future, 
-              builder: (context, AsyncSnapshot snapshot){
-                return Text('example four');
+              future: getUserApi(), 
+              builder: (context,  snapshot){
+               if (snapshot.connectionState == ConnectionState.waiting){
+                return Center(child: CircularProgressIndicator(),
+                );
+               }
 
+               else{
+                return Text('Data Loaded');
+                
+               }
+              
               },
               ),
             ),
