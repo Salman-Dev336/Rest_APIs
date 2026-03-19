@@ -36,6 +36,50 @@ class _ExampleThreeState extends State<ExampleThree> {
     return Scaffold(
       appBar: AppBar(title: Text('API Course'), centerTitle: true),
       body: Column(children: [
+        Expanded(
+          child: FutureBuilder(
+            future: getUserApi(),
+            builder: (context, AsyncSnapshot<List<UserModel>> snapshot) {
+              if (!snapshot.hasData) {
+                return Text('Loading');
+              } else {
+                return ListView.builder(
+                    itemCount: userList.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text('Name: '),
+                                  Text(userList[index].name.toString()),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('Email: '),
+                                  Text(userList[index].email.toString()),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text('Address: '),
+                                  Text(userList[index].address!.street.toString()),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+              }
+              
+            },
+          )
+          ),
 
         ],
       ),
