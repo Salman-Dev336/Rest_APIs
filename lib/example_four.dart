@@ -15,9 +15,10 @@ class ExampleFour extends StatefulWidget {
 }
 
 class _ExampleFourState extends State<ExampleFour> {
+    var data;
 
   Future<void>  getUserApi() async{
-    var data;
+  
     final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
 
    
@@ -58,7 +59,7 @@ class _ExampleFourState extends State<ExampleFour> {
                }
 
                else{
-                return Text('Data Loaded');
+                return Text(data[0]['name'].toString());
                 
                }
               
