@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables, unused_local_variable
+// ignore_for_file: unused_import, depend_on_referenced_packages, strict_top_level_inference, must_be_immutable, prefer_typing_uninitialized_variables, unused_local_variable
 
 import 'dart:convert';
 

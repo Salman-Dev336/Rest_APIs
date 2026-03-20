@@ -11,6 +11,7 @@ analyzer:
   errors:
     camel_case_types: ignore
     prefer_collection_literals: ignore
+    strict_top_level_inference: ignore
     unnecessary_new: ignore
     unnecessary_this: ignore
     unused_import: ignore ignore ignore ignore ignore
