@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:rest_api/Models/products_model.dart';
@@ -47,8 +49,21 @@ Future<ProductsModel> getProductsAPI() async {
                     return Column(
                       children: [
                        Container(
-                        
-                       )
+                        height: MediaQuery.of(context).size.height*.3,
+                        width: MediaQuery.of(context).size.height*.1,
+                        child: ListView.builder(
+                          itemCount: snapshot.data!.data![index].images!.length,
+                          itemBuilder: (context , position){
+                            return Container(
+                                   height: MediaQuery.of(context).size.height*.25,
+                        width: MediaQuery.of(context).size.height*.5,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(''))
+                        ) ,
+                            );
+                          }),
+                       ),
                       ],
 
                     );
