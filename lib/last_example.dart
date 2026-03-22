@@ -35,11 +35,23 @@ Future<ProductsModel> getProductsAPI() async {
       body: Column(
         children: [
           Expanded(
-            child: FutureBuilder(
-              future: future, 
+            child: FutureBuilder<ProductsModel>(
+              future: getProductsAPI(),
               builder: (context, snapshot){
+                if(!snapshot.hasData){
+                  return Text('Loading');
+                }
                 return ListView.builder(
+                  itemCount: snapshot.data!.data!.length,
                   itemBuilder: (context, index){
+                    return Column(
+                      children: [
+                       Container(
+                        
+                       )
+                      ],
+
+                    );
                    
                   });
                   
