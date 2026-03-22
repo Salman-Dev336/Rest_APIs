@@ -14,6 +14,12 @@ class LastExample extends StatefulWidget {
 class _LastExampleState extends State<LastExample> {
 Future<ProductsModel> getProductsAPI() async {
   final response = await http.get(Uri.parse('https://webhook.site/8e8858b7-c47f-4b68-817f-fce4acfcb4c5'));
+  var data = jsonDecode(response.body.toString());
+  if (response.statusCode==200){
+
+    return ProductsModel.fromJson(data);
+  }
+  return ProductsModel.fromJson(data);
 
 }
 

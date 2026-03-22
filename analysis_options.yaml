@@ -14,7 +14,7 @@ analyzer:
     strict_top_level_inference: ignore
     unnecessary_new: ignore
     unnecessary_this: ignore
-    unused_import: ignore ignore ignore ignore ignore
+    unused_import: ignore ignore ignore ignore ignore ignore ignore ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:
