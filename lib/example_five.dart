@@ -20,6 +20,9 @@ class _ExampleFiveState extends State<ExampleFive> {
         centerTitle: true,
         backgroundColor: Colors.deepOrangeAccent,
       ),
+      body: Column(
+        children: [],
+      ),
     );
   }
 }
