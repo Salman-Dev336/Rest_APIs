@@ -34,7 +34,17 @@ Future<ProductsModel> getProductsAPI() async {
       ),
       body: Column(
         children: [
-          Text('Products API Integration'),
+          Expanded(
+            child: FutureBuilder(
+              future: future, 
+              builder: (context, snapshot){
+                return ListView.builder(
+                  itemBuilder: (context, index){
+                   
+                  });
+                  
+              }
+              )),
         ],
       ),
     );
