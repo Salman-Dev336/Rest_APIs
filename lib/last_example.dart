@@ -14,7 +14,17 @@ class _LastExampleState extends State<LastExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text('Integrtion of Products API'),
+        centerTitle: true,
+        backgroundColor: Colors.blueAccent,
+
+      ),
+      body: Column(
+        children: [
+          Text('Products API Integration'),
+        ],
+      ),
     );
   }
 }
