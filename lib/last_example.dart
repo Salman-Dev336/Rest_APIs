@@ -34,49 +34,52 @@ Future<ProductsModel> getProductsAPI() async {
         backgroundColor: Colors.blueAccent,
 
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: FutureBuilder<ProductsModel>(
-              future: getProductsAPI(),
-              builder: (context, snapshot){
-                if(!snapshot.hasData){
-                  return Text('Loading');
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: FutureBuilder<ProductsModel>(
+                future: getProductsAPI(),
+                builder: (context, snapshot){
+                  if(!snapshot.hasData){
+                    return Text('Loading');
+                  }
+                  return ListView.builder(
+                    itemCount: snapshot.data!.data!.length,
+                    itemBuilder: (context, index){
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                         Container(
+                          height: MediaQuery.of(context).size.height*.3,
+                          width: MediaQuery.of(context).size.height*1,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: snapshot.data!.data![index].images!.length,
+                            itemBuilder: (context , position){
+                              return Container(
+                                     height: MediaQuery.of(context).size.height*.25,
+                          width: MediaQuery.of(context).size.height*.5,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(snapshot.data!.data![index].images![position].url.toString()),
+                              ),
+                          ) ,
+                              );
+                            }),
+                         ),
+                        ],
+        
+                      );
+                     
+                    });
+                    
                 }
-                return ListView.builder(
-                  itemCount: snapshot.data!.data!.length,
-                  itemBuilder: (context, index){
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                       Container(
-                        height: MediaQuery.of(context).size.height*.3,
-                        width: MediaQuery.of(context).size.height*1,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: snapshot.data!.data![index].images!.length,
-                          itemBuilder: (context , position){
-                            return Container(
-                                   height: MediaQuery.of(context).size.height*.25,
-                        width: MediaQuery.of(context).size.height*.5,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(snapshot.data!.data![index].images![position].url.toString()),
-                            ),
-                        ) ,
-                            );
-                          }),
-                       ),
-                      ],
-
-                    );
-                   
-                  });
-                  
-              }
-              )),
-        ],
+                )),
+          ],
+        ),
       ),
     );
   }
