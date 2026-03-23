@@ -78,6 +78,7 @@ Future<ProductsModel> getProductsAPI() async {
                               );
                             }),
                          ),
+                         Icon(snapshot.data!.data![index].inWishlist! == true ? Icons.favorite : Icons.favorite_outlined),
                         ]
                       );
                     });
