@@ -47,11 +47,14 @@ Future<ProductsModel> getProductsAPI() async {
                   itemCount: snapshot.data!.data!.length,
                   itemBuilder: (context, index){
                     return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                        Container(
                         height: MediaQuery.of(context).size.height*.3,
                         width: MediaQuery.of(context).size.height*.1,
                         child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data!.data![index].images!.length,
                           itemBuilder: (context , position){
                             return Container(
@@ -59,7 +62,8 @@ Future<ProductsModel> getProductsAPI() async {
                         width: MediaQuery.of(context).size.height*.5,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage(snapshot.data!.data![index].images![position].url.toString()))
+                            image: NetworkImage(snapshot.data!.data![index].images![position].url.toString()),
+                            ),
                         ) ,
                             );
                           }),
