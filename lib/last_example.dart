@@ -52,7 +52,7 @@ Future<ProductsModel> getProductsAPI() async {
                       children: [
                        Container(
                         height: MediaQuery.of(context).size.height*.3,
-                        width: MediaQuery.of(context).size.height*.1,
+                        width: MediaQuery.of(context).size.height*1,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data!.data![index].images!.length,
