@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: unused_import, avoid_unnecessary_containers
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -54,8 +54,11 @@ Future<ProductsModel> getProductsAPI() async {
                         children: [
                           ListTile(
                             title: Text(snapshot.data!.data![index].shop!.name.toString()),
-                            subtitle: Text(''),
-                            
+                            subtitle: Text(snapshot.data!.data![index].shop!.shopemail.toString()),
+                            leading: CircleAvatar(
+                              backgroundImage: NetworkImage(snapshot.data!.data![index].shop!.image.toString()),
+                            ),
+
                           ),
                          Container(
                           height: MediaQuery.of(context).size.height*.3,
@@ -75,12 +78,9 @@ Future<ProductsModel> getProductsAPI() async {
                               );
                             }),
                          ),
-                        ],
-        
+                        ]
                       );
-                     
                     });
-                    
                 }
                 )),
           ],
