@@ -59,7 +59,7 @@ Future<ProductsModel> getProductsAPI() async {
                         width: MediaQuery.of(context).size.height*.5,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage(''))
+                            image: NetworkImage(snapshot.data!.data![index].images![position].url.toString()))
                         ) ,
                             );
                           }),

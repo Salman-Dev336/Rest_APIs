@@ -11,10 +11,11 @@ analyzer:
   errors:
     camel_case_types: ignore
     prefer_collection_literals: ignore
+    sized_box_for_whitespace: ignore
     strict_top_level_inference: ignore
     unnecessary_new: ignore
     unnecessary_this: ignore
-    unused_import: ignore ignore ignore ignore ignore ignore ignore ignore
+    unused_import: ignore ignore ignore ignore ignore ignore ignore ignore ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:
