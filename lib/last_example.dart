@@ -52,6 +52,11 @@ Future<ProductsModel> getProductsAPI() async {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          ListTile(
+                            title: Text(snapshot.data!.data![index].shop!.name.toString()),
+                            subtitle: Text(''),
+                            
+                          ),
                          Container(
                           height: MediaQuery.of(context).size.height*.3,
                           width: MediaQuery.of(context).size.height*1,
