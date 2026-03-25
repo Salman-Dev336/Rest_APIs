@@ -17,6 +17,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         backgroundColor: Colors.pinkAccent,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           
         ],
