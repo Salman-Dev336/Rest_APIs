@@ -16,6 +16,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
         centerTitle: true,
         backgroundColor: Colors.pinkAccent,
       ),
+      body: Column(
+        children: [
+          
+        ],
+      ),
     );
   }
 }
