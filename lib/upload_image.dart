@@ -16,6 +16,13 @@ class _UploadImageScreenState extends State<UploadImageScreen> {
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          
+        ],
+      ),
     );
   }
 }
