@@ -43,20 +43,20 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["id"] = id;
-    _data["name"] = name;
-    _data["username"] = username;
-    _data["email"] = email;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["id"] = id;
+    data["name"] = name;
+    data["username"] = username;
+    data["email"] = email;
     if(address != null) {
-      _data["address"] = address?.toJson();
+      data["address"] = address?.toJson();
     }
-    _data["phone"] = phone;
-    _data["website"] = website;
+    data["phone"] = phone;
+    data["website"] = website;
     if(company != null) {
-      _data["company"] = company?.toJson();
+      data["company"] = company?.toJson();
     }
-    return _data;
+    return data;
   }
 }
 
@@ -84,11 +84,11 @@ class Company {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["name"] = name;
-    _data["catchPhrase"] = catchPhrase;
-    _data["bs"] = bs;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["name"] = name;
+    data["catchPhrase"] = catchPhrase;
+    data["bs"] = bs;
+    return data;
   }
 }
 
@@ -124,15 +124,15 @@ class Address {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["street"] = street;
-    _data["suite"] = suite;
-    _data["city"] = city;
-    _data["zipcode"] = zipcode;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["street"] = street;
+    data["suite"] = suite;
+    data["city"] = city;
+    data["zipcode"] = zipcode;
     if(geo != null) {
-      _data["geo"] = geo?.toJson();
+      data["geo"] = geo?.toJson();
     }
-    return _data;
+    return data;
   }
 }
 
@@ -156,9 +156,9 @@ class Geo {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["lat"] = lat;
-    _data["lng"] = lng;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["lat"] = lat;
+    data["lng"] = lng;
+    return data;
   }
 }
